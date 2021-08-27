@@ -16,6 +16,29 @@ const calculator = {
       self.addMultiply()
     })
 
+    let divide = document.querySelector("#divide")
+    divide.addEventListener("click", function(event) {
+      self.addDivide()
+    })
+
+    let subtract = document.querySelector("#subtract")
+    subtract.addEventListener("click", function(event) {
+      self.addSubtract()
+    })
+
+    let addition = document.querySelector("#addition")
+    addition.addEventListener("click", function(event) {
+      self.addAddition()
+    })
+
+    let one = document.querySelector("#one")
+    one.addEventListener("click", function(event) {
+      self.addOne()
+    })
+
+
+
+
   },
   evaluate() {
     let userInput = document.querySelector("#user-input")
@@ -36,7 +59,32 @@ const calculator = {
     if(userInput.value .slice(-1) !== "*") {
       userInput.value = userInput.value + "*"
     }
-  }
+  },
+  addDivide() {
+    let userInput = this.getUserInput()
+    if(userInput.value .slice(-1) !== "/") {
+      userInput.value = userInput.value + "/"
+    }
+  },
+  addSubtract() {
+    let userInput = this.getUserInput()
+    if(userInput.value .slice(-1) !== "-") {
+      userInput.value = userInput.value + "-"
+    }
+  },
+  addAddition() {
+    let userInput = this.getUserInput()
+    if(userInput.value .slice(-1) !== "+") {
+      userInput.value = userInput.value + "+"
+    }
+  },
+  addOne() {
+    let userInput = this.getUserInput()
+    if(userInput.value .slice(-1) !== "1") {
+      userInput.value = userInput.value + "1"
+    }
+  },
+
 }
 
 calculator.start()
