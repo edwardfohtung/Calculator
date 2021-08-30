@@ -213,6 +213,9 @@ const calculator = {
   addPercentage() {
     let userInput = this.getUserInput()
     if(userInput.value .slice(-1) !== "%") {
+      function percentage(partialValue, totalValue) {
+        return (100 * partialValue) / totalValue;
+     } 
       userInput.value = userInput.value + "%"
     }
   },
