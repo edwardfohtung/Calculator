@@ -100,10 +100,6 @@ const calculator = {
     brackets.addEventListener("click", function(event) {
       self.addBrackets()
     })
-
-
-
-
   },
   evaluate() {
     let userInput = document.querySelector("#user-input")
