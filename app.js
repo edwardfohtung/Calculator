@@ -100,12 +100,16 @@ const calculator = {
     brackets.addEventListener("click", function(event) {
       self.addBrackets()
     })
+    let math_sin = document.querySelector("#math_sin")
+    math_sin.addEventListener("click", function(event) {
+      self.addMath_sin()
+    })
   },
   evaluate() {
     let userInput = document.querySelector("#user-input")
     let expression = document.querySelector("#expression")
     console.log(userInput.value, "user input", expression)
-    expression.textContent = userInput.value
+    expression.textContent = userInput.value  
     userInput.value = eval(userInput.value)
   },
   clearInput() {
@@ -225,6 +229,12 @@ const calculator = {
     let userInput = this.getUserInput()
     if(userInput.value .slice(-1) !== ")") {
       userInput.value = userInput.value + ")"
+    }
+  },
+  addMath_sin() {
+    let userInput = this.getUserInput()
+    if(userInput.value .slice(-1) !== ")") {
+      userInput.text = userInput.text + "sin"
     }
   },
 
