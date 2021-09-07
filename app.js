@@ -100,9 +100,9 @@ const calculator = {
     brackets.addEventListener("click", function(event) {
       self.addBrackets()
     })
-    let math_sin = document.querySelector("#math_sin")
-    math_sin.addEventListener("click", function(event) {
-      self.addMath_sin()
+    let sin = document.querySelector("#sin")
+      sin.addEventListener("click", function(event) {
+      self.addSin()
     })
   },
   evaluate() {
@@ -110,7 +110,7 @@ const calculator = {
     let expression = document.querySelector("#expression")
     console.log(userInput.value, "user input", expression)
     expression.textContent = userInput.value  
-    userInput.value = eval(userInput.value)
+    userInput.value = eval(userInput.value.replaceAll("sin", "Math.sin").replaceAll("cos", "Math.cos").replaceAll("tan", "Math.tan").replaceAll("log", "Math.log"))
   },
   clearInput() {
     let userInput = this.getUserInput()
@@ -212,7 +212,7 @@ const calculator = {
   },
   addPercentage() {
     let userInput = this.getUserInput()
-    if(userInput.value .slice(-1) !== "%") {
+    if(userInput.value.slice(-1) !== "%") {
       function percentage(partialValue, totalValue) {
         return (100 * partialValue) / totalValue;
      } 
@@ -221,22 +221,24 @@ const calculator = {
   },
   addBracket() {
     let userInput = this.getUserInput()
-    if(userInput.value .slice(-1) !== "(") {
+    if(userInput.value.slice(-1) !== "(") {
       userInput.value = userInput.value + "("
     }
   },
   addBrackets() {
-    let userInput = this.getUserInput()
-    if(userInput.value .slice(-1) !== ")") {
-      userInput.value = userInput.value + ")"
-    }
+    this.inputAdder(")")
   },
-  addMath_sin() {
-    let userInput = this.getUserInput()
-    if(userInput.value .slice(-1) !== ")") {
-      userInput.text = userInput.text + "sin"
-    }
+  addSin() {
+    console.log("sin")
+    this.inputAdder("sin")
   },
+  inputAdder(input) {
+    let userInput = this.getUserInput()
+    if(userInput.value.slice(-1) !== input) {
+      userInput.value = userInput.value + input
+      console.log(userInput.value, this.getUserInput())
+    }
+  }
 
 }
 
