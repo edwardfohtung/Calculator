@@ -104,6 +104,18 @@ const calculator = {
       sin.addEventListener("click", function(event) {
       self.addSin()
     })
+    let cos = document.querySelector("#cos")
+      cos.addEventListener("click", function(event) {
+      self.addCos()
+    })
+    let tan = document.querySelector("#tan")
+      tan.addEventListener("click", function(event) {
+      self.addTan()
+    })
+    let log = document.querySelector("#log")
+      log.addEventListener("click", function(event) {
+      self.addLog()
+    })
   },
   evaluate() {
     let userInput = document.querySelector("#user-input")
@@ -114,7 +126,7 @@ const calculator = {
   },
   clearInput() {
     let userInput = this.getUserInput()
-    userInput.value = '0'
+    userInput.value = ''
   },
   getUserInput() {
     return document.querySelector("#user-input")
@@ -231,6 +243,18 @@ const calculator = {
   addSin() {
     console.log("sin")
     this.inputAdder("sin")
+  },
+  addCos() {
+    console.log("cos")
+    this.inputAdder("cos")
+  },
+  addTan(){
+    console.log("tan")
+    this.inputAdder("tan")
+  },
+  addLog() {
+    console.log("log")
+    this.inputAdder("log")
   },
   inputAdder(input) {
     let userInput = this.getUserInput()
