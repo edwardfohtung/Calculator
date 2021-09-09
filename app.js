@@ -116,6 +116,18 @@ const calculator = {
       log.addEventListener("click", function(event) {
       self.addLog()
     })
+    let pii = document.querySelector("#pii")
+      log.addEventListener("click", function(event) {
+      self.addPii()
+    })
+    let exp = document.querySelector("#exp")
+      log.addEventListener("click", function(event) {
+      self.addExp()
+    })
+    let squareroot = document.querySelector("#squareroot")
+      log.addEventListener("click", function(event) {
+      self.addSquareroot()
+    })
   },
   evaluate() {
     let userInput = document.querySelector("#user-input")
@@ -224,7 +236,7 @@ const calculator = {
   },
   addPercent() {
     let userInput = this.getUserInput()
-    if(userInput.value.slice(-1) !== "%") {
+    if(userInput.value.slice(-1) !== "\u0025") {
       userInput.value = userInput.value + "\u0025"
     }
   },
@@ -252,6 +264,18 @@ const calculator = {
   addLog() {
     console.log("log")
     this.inputAdder("log")
+  },
+  addPii() {
+    console.log("pii")
+    this.inputAdder("pii")
+  },
+  addSquareroot(){
+    console.log("√")
+    this.inputAdder("√")
+  },
+  addExp(){
+    console.log("E")
+    this.inputAdder("E")
   },
   inputAdder(input) {
     let userInput = this.getUserInput()
