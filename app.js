@@ -116,16 +116,19 @@ const calculator = {
       log.addEventListener("click", function(event) {
       self.addLog()
     })
+
     let pii = document.querySelector("#pii")
-      log.addEventListener("click", function(event) {
+      pii.addEventListener("click", function(event) {
       self.addPii()
     })
+
     let exp = document.querySelector("#exp")
-      log.addEventListener("click", function(event) {
+      exp.addEventListener("click", function(event) {
       self.addExp()
     })
+
     let squareroot = document.querySelector("#squareroot")
-      log.addEventListener("click", function(event) {
+      squareroot.addEventListener("click", function(event) {
       self.addSquareroot()
     })
   },
@@ -134,11 +137,11 @@ const calculator = {
     let expression = document.querySelector("#expression")
     console.log(userInput.value, "user input", expression)
     expression.textContent = userInput.value  
-    userInput.value = eval(userInput.value.replaceAll("sin", "Math.sin").replaceAll("cos", "Math.cos").replaceAll("tan", "Math.tan").replaceAll("log", "Math.log").replaceAll("%","\u0025"))
+    userInput.value = eval(userInput.value.replaceAll("sin", "Math.sin").replaceAll("cos", "Math.cos").replaceAll("tan", "Math.tan").replaceAll("log", "Math.log").replaceAll("percent","\u0025").replaceAll("π","Math.PI").replaceAll("√","Math.sqrt").replaceAll("EXP","Math.E").replaceAll("%", "/100"))
   },
   clearInput() {
     let userInput = this.getUserInput()
-    userInput.value = ''
+    userInput.value = ''  
   },
   getUserInput() {
     return document.querySelector("#user-input")
@@ -234,6 +237,24 @@ const calculator = {
       userInput.value = userInput.value + "."
     }
   },
+  addPii() {
+    let userInput = this.getUserInput()
+    if(userInput.value .slice(-1) !== "π") {
+      userInput.value = userInput.value + "π"
+    }
+  },
+  addExp() {
+    let userInput = this.getUserInput()
+    if(userInput.value .slice(-1) !== "E") {
+      userInput.value = userInput.value + "E"
+    }
+  },
+  addSquareroot() {
+    let userInput = this.getUserInput()
+    if(userInput.value .slice(-1) !== "√") {
+      userInput.value = userInput.value + "√"
+    }
+  },      
   addPercent() {
     let userInput = this.getUserInput()
     if(userInput.value.slice(-1) !== "\u0025") {
@@ -261,29 +282,21 @@ const calculator = {
     console.log("tan")
     this.inputAdder("tan")
   },
-  addLog() {
+  addLog(){
     console.log("log")
     this.inputAdder("log")
   },
-  addPii() {
-    console.log("pii")
-    this.inputAdder("pii")
-  },
-  addSquareroot(){
-    console.log("√")
-    this.inputAdder("√")
-  },
-  addExp(){
-    console.log("E")
-    this.inputAdder("E")
-  },
+  
+ 
+  
+ 
   inputAdder(input) {
     let userInput = this.getUserInput()
     if(userInput.value.slice(-1) !== input) {
       userInput.value = userInput.value + input
       console.log(userInput.value, this.getUserInput())
     }
-  }
+  },
 
 }
 
