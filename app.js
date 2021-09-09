@@ -86,9 +86,9 @@ const calculator = {
       self.addDot()
     })
 
-    let percentage = document.querySelector("#percentage")
-    percentage.addEventListener("click", function(event) {
-      self.addPercentage()
+    let percent = document.querySelector("#percent")
+    percent.addEventListener("click", function(event) {
+      self.addPercent()
     })
 
     let bracket = document.querySelector("#bracket")
@@ -122,7 +122,7 @@ const calculator = {
     let expression = document.querySelector("#expression")
     console.log(userInput.value, "user input", expression)
     expression.textContent = userInput.value  
-    userInput.value = eval(userInput.value.replaceAll("sin", "Math.sin").replaceAll("cos", "Math.cos").replaceAll("tan", "Math.tan").replaceAll("log", "Math.log"))
+    userInput.value = eval(userInput.value.replaceAll("sin", "Math.sin").replaceAll("cos", "Math.cos").replaceAll("tan", "Math.tan").replaceAll("log", "Math.log").replaceAll("%","\u0025"))
   },
   clearInput() {
     let userInput = this.getUserInput()
@@ -222,13 +222,10 @@ const calculator = {
       userInput.value = userInput.value + "."
     }
   },
-  addPercentage() {
+  addPercent() {
     let userInput = this.getUserInput()
     if(userInput.value.slice(-1) !== "%") {
-      function percentage(partialValue, totalValue) {
-        return (100 * partialValue) / totalValue;
-     } 
-      userInput.value = userInput.value + "%"
+      userInput.value = userInput.value + "\u0025"
     }
   },
   addBracket() {
